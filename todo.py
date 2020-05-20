@@ -25,8 +25,8 @@ class TaskEntry(object):
 
     def handle_entrybutton(self):
         print("Woohoo!")
-        self.tasks = list(set([entry.get().strip() for entry in self.entries
-                      if len(entry.get()) > 0]))
+        self.tasks = ([entry.get().strip() for entry in self.entries
+                      if len(entry.get()) > 0])
         self.window_taskenter.destroy()
 
 
@@ -36,18 +36,23 @@ class TaskButtons(object):
         self.window = tk.Tk()
         screen_width = self.window.winfo_screenwidth()
         screen_height = self.window.winfo_screenheight()
+        windowwidth = int(screen_width * 2 / 3)
+        windowheight = int(screen_height * 5 / 6)
+        self.window.geometry(f"{windowwidth}x{windowheight}")
         print(f"screen: {screen_width} x {screen_height}")
         self.window.title("Click 'em when they're done!")
         self.dones = [False] * len(tasks)
         btnheight = min(10, int((100 / len(tasks))))
         print(f"btnheight: {btnheight}")
         fontsize = max(btnheight-2, 20)
+        fontsize = 20
         myfont = ("Times", str(fontsize), "bold")
         btnwidth = screen_width
         self.buttons = []
         for i in range(len(tasks)):
             button = tk.Button(text=tasks[i], command=lambda idx=i: self.handle_donebutton(idx),
-                               width=btnwidth, height=btnheight, highlightthickness=int(btnheight/2))
+                              # width=btnwidth, height=btnheight, highlightthickness=int(btnheight/2)
+                               )
             button['font'] = myfont
             button.pack()
             self.buttons.append(button)
