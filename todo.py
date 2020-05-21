@@ -63,13 +63,13 @@ class TaskButtons(object):
         self.buttons[task_idx].configure(bg="purple", highlightbackground="red", fg="green")
         print(self.dones)
         if sum(self.dones) == len(self.dones):
-            self.window.destroy()
+            #self.window.destroy()
 
-            newwindow = tk.Tk()
-            newwindow.title("All done!")
+            #newwindow = tk.Tk()
+            #newwindow.title("All done!")
             label = tk.Label(text="You're Done! That's amazing!", font=("Times", 20, "bold")).pack()
-            newwindow.after(3000, newwindow.destroy)
-            newwindow.mainloop()
+            #newwindow.after(3000, newwindow.destroy)
+            #newwindow.mainloop()
 
 
 
